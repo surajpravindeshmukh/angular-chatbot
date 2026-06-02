@@ -1,0 +1,60 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <div class="title-section">
+      <h1>
+        Suraj's Assistant
+      </h1>
+      <!-- <div class="subtitle">cognitive assistant</div> -->
+    </div>
+  </div>
+
+  <div class="chat-messages">
+    <!-- Chat Messages -->
+    @for (message of messages(); track $index) {
+    <div class="message" [class.user-message]="message.sender === 'user'"
+      [class.assistant-message]="message.sender === 'ai'">
+      <div class="message-bubble" [innerHTML]="formatMessage(message.text)"></div>
+      <div class="message-meta">
+        {{ message.sender === 'user' ? 'You' : "Suraj's Assistant" }}
+        • {{ message.time }}
+      </div>
+    </div>
+    }
+
+    <!-- Empty state -->
+    @if (messages().length === 0 && !loading()) {
+    <div class="empty-state">
+      <div class="empty-icon">💬✨</div>
+      <div class="empty-title">Ready to assist</div>
+      <div class="empty-subtitle">Ask me anything — coding, ideas, knowledge</div>
+    </div>
+    }
+
+    <!-- Loading indicator -->
+    @if (loading()) {
+    <div class="message assistant-message">
+      <div class="thinking">
+        <div class="dot-pulse">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span>Thinking...</span>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="input-area">
+    <div class="input-group">
+      <input [(ngModel)]="prompt" (keydown.enter)="send()" placeholder="Ask me anything — coding, ideas, knowledge..."
+        autocomplete="off">
+      <button class="send-btn" (click)="send()" [disabled]="loading()">
+        <span>Send</span>
+      </button>
+    </div>
+    <div class="input-hint">
+      ⚡ Press Enter to send
+    </div>
+  </div>
+</div>
