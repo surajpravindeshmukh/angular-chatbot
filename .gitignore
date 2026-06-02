@@ -1,0 +1,46 @@
+# =========================
+# Angular
+# =========================
+ai-chatbot-ui/node_modules/
+ai-chatbot-ui/dist/
+ai-chatbot-ui/.angular/
+ai-chatbot-ui/coverage/
+
+# =========================
+# Python
+# =========================
+ai-chatbot/**/__pycache__/
+ai-chatbot/**/*.pyc
+
+# Virtual environments
+ai-chatbot/venv/
+ai-chatbot/.venv/
+ai-chatbot/env/
+
+# Python caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# macOS
+# =========================
+.DS_Store
